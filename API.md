@@ -18,10 +18,10 @@ in years and  months,coupon rate, and market rate, and installment period in mon
 * installmentPeriod (int)
 * balance (double)
 * payment (double)
-* principle (double)
-* interest (double)
 * premium (boolean)
 * numPayments (int)
+* paymentNumber (int)
+* adjustedDebtAmount (double)
 
 #### Methods ####
 * getClient - is a public method that takes in no parameters and returns a String name of the client.
@@ -32,8 +32,24 @@ in years and  months,coupon rate, and market rate, and installment period in mon
 * getMarketRate - is a public method that takes in no parameters and retruns a double market rate for similar debt.
 * getInstallmentPeriod - is a public method that takes in no parameters and retruns an int number of months between installments.
 
+
+### Payments
+###
+* interest (double)
+* principle (double)
+* date ()
+* balance (double)
+
+
+
 ### ScheduleCalculator ###
 
+* calcBalance - is a public method that takes in no parameters and retruns a double of the current balance after payments. 
+* calcInterest - is a public method that takes in the payment number and the balance and calculates and retruns the interest payment. 
+* calcPrinciple - is a public method that take in the 
+* calcAdjstedDebtAmount - 
 
-* getBalance - is a public method that takes in no parameters and retruns a double of the current balance after payments. 
-* getPaymentAmount - getPrinciple
+
+### AmortizationTable ###
+
+
