@@ -17,12 +17,10 @@ in years and  months,coupon rate, and market rate, and installment period in mon
 * couponRate (double)
 * marketRate (double)
 * installmentPeriod (int)
-* balance (double)
 * payment (double)
 * premium (boolean)
 * numPayments (int)
-* paymentNumber (int)
-* adjustedDebtAmount (double)
+* adjustedIssueAmount (double)
 
 #### Methods ####
 * getClient - is a public method that takes in no parameters and returns a String name of the client.
@@ -32,20 +30,27 @@ in years and  months,coupon rate, and market rate, and installment period in mon
 * getCouponRate - is a public method that takes in no parameters and returns a double rate of the debt.
 * getMarketRate - is a public method that takes in no parameters and retruns a double market rate for similar debt.
 * getInstallmentPeriod - is a public method that takes in no parameters and retruns an int number of months between installments.
+* calcAdjstedBondAmount -
 
 _______________________________________________________________________________________________
 
 ### Payment ###
+The Payment class extends the Bond Class method encapsulates the criteria of an installment of the bond. It has one constructor that initializes all variables. 
+
+#### Variables ####
 * interest (double)
 * principle (double)
 * date ()
 * balance (double)
 
 #### Methods ####
+* calcBalance - is a public method that takes in no parameters and retruns a double of the current balance after payments. 
+* calcInterest - is a public method that takes in the payment number and the balance and calculates and retruns the interest payment. 
+* calcPrinciple - is a public method that take in the  
 * getInterest
 * getPrinciple
 * getDate
-* getBalance
+* getAdjustedBalance
 
 ____________________________________________________________________
 
@@ -60,15 +65,6 @@ PaymentList is a class whos purpose is to encapsulate the series of payments req
 
 ________________________________________________________________________________________________
 
-### PaymentCalculator ###
-The PaymentCalculator is a helper class
-
-* calcBalance - is a public method that takes in no parameters and retruns a double of the current balance after payments. 
-* calcInterest - is a public method that takes in the payment number and the balance and calculates and retruns the interest payment. 
-* calcPrinciple - is a public method that take in the 
-* calcAdjstedBondAmount - 
-
-______________________________________________________________________
 
 ### AmortizationTable ###
 
