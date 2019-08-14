@@ -1,4 +1,4 @@
-package src.data;
+package data;
 
 public class Bond {
 
@@ -24,18 +24,20 @@ public class Bond {
 				int termLengthMonths, double couponRate, double marketRate,
 				int installementPeriodMonths) {
 		this.client = client;
-		this.adjustedIssueAmount = issueAmount;
+		this.issueAmount = issueAmount;
 		this.termLengthYears = termLengthYears;
 		this.termLengthMonths = termLengthMonths;
 		this.couponRate = couponRate;
 		this.marketRate = marketRate;
 		this.installementPeriodMonths = installementPeriodMonths;
+		this.premium = isPremium(couponRate, marketRate);
 		calcAdjustedCouponRate();
 		calcAdjustedMarketRate();
 		calcNumPayments();
+		calcPayment();
 		calcAdjustedIssueAmount();
 		
-		calcPayment();
+		
 		
 		
 		
@@ -48,14 +50,16 @@ public class Bond {
 
 
 	public void calcAdjustedIssueAmount() {
+		double a = issueAmount / (Math.pow(1.0 + adjustedMarketRate, numPayments));
+		double b = (1.0 - (Math.pow(1.0 + adjustedMarketRate, -1.0 * numPayments))) / adjustedMarketRate;
 		
-		adjustedIssueAmount = issueAmount / Math.pow(1 + adjustedMarketRate, numPayments) + payment *
-								(1 - (Math.pow(1 + adjustedMarketRate, (numPayments * -1))) / adjustedMarketRate);
+		adjustedIssueAmount = Math.round((a + payment * b) * 100.00) / 100.00;
 	}
 
 
 	private void calcPayment() {
 		payment = issueAmount * adjustedCouponRate;
+
 	}
 
 
@@ -65,9 +69,7 @@ public class Bond {
 	}
 
 
-	public double getPayment() {
-		return payment;
-	}
+	
 
 	private void calcAdjustedMarketRate() {
 		adjustedMarketRate = (marketRate / 100.000) * (installementPeriodMonths / 12.00);
@@ -85,5 +87,18 @@ public class Bond {
 	public int getNumPayments() {
 		return numPayments;
 	}
+	
+	public double getPayment() {
+		return payment;
+	}
+	
+	public String getClient() {
+		return client;
+	}
+	
+	public boolean getPremium() {
+		return premium;
+	}
+	
 }
 
